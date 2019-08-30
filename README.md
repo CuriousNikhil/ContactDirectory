@@ -3,7 +3,7 @@
 _A simple contact directory implementation with the help of Ternary Search Tree_
 
 **Get Started**
-1. Get the `ContactsDirectory.jar` file from the folder `ContactsDirectory`
+1. Get the `ContactsDirectory.jar` file from the folder `ContactsDirectory` or you can download [here](https://github.com/CuriousNikhil/ContactDirectory/blob/master/out/artifacts/ContactDirectory_jar/ContactDirectory.jar)
 2. Run the application by opening `terminal`
         
         $ java -jar ContactsDirectory.jar
