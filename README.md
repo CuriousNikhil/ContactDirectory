@@ -1,4 +1,4 @@
-#Contacts Directory
+# Contacts Directory
 
 _A simple contact directory implementation with the help of Ternary Search Tree_
 
