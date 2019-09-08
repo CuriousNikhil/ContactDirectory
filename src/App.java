@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Queue;
 import java.util.Random;
+import java.util.UUID;
 
 public class App {
 
@@ -18,18 +19,50 @@ public class App {
 
         System.out.println("############### Contacts Directory ###############");
 
-        if (args.length > 0) {
-            if (args[0].equals("test")) {
-                //Test the application
-                AssertsEnabled.assertsEnabled();
-                Test test = new Test();
-                test.runTests();
-                // All tests passed
+            Thread t1 = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    app.generateRandomData(app,tst );
+
+                }
+            });
+
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                app.generateRandomData(app,tst );
+
             }
-        } else {
-            //Run the application
-            app.run(br, tst);
+        });
+        Thread t3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                app.generateRandomData(app,tst );
+
+            }
+        });
+
+
+            t1.start();
+            t2.start();
+            t3.start();
+
+        try {
+            t1.join();
+            t2.join();
+            t3.join();
+
+            Queue<String> queue =  tst.getDefaultContacts();
+            app.displayContacts(queue);
+            System.out.println("Length of the tree "+queue.size());
+
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+
+
+
 
     }
 
@@ -67,6 +100,20 @@ public class App {
                 System.out.println("Please enter correct choice!");
                 System.out.println();
             }
+
+        }
+    }
+
+    private synchronized void generateRandomData(App app, Directory<String> tst){
+        for (int i=0;i<1000;i++){
+            String no  = String.valueOf(new Random().nextInt());
+//            String n = UUID.randomUUID().toString();
+            tst.add(no, "Something");
+        }
+    }
+
+    private  void addContactsByThread(Directory<String> tst, String name){
+        synchronized (App.class){
 
         }
     }

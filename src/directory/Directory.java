@@ -111,7 +111,7 @@ public class Directory<T> {
     /*
     * Returns the Default contact list if there is search miss
     */
-    private Queue<String> getDefaultContacts() {
+    public Queue<String> getDefaultContacts() {
         Queue<String> listOfContacts = new LinkedList<>();
         collect(root, new StringBuilder(""), listOfContacts);
         return listOfContacts;
